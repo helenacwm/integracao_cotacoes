@@ -26,11 +26,8 @@ python -m pytest -v          # roda os testes
 - **HTTP 429 (limite de requisições):** nova tentativa respeitando `Retry-After` (máx. 30 s) ou o dobro da espera normal.
 - **Respostas inválidas:** HTTP 4xx (exceto 429), JSON inválido, resposta vazia ou campos ausentes/não numéricos geram `RespostaInvalidaAPI`. Nada é gravado nesses casos.
 - **Chave de API (opcional):** lida da variável de ambiente `AWESOMEAPI_KEY` e enviada no cabeçalho `x-api-key`. A AwesomeAPI oferece chave gratuita; sem ela, a API pode limitar (HTTP 429) em IPs compartilhados, como o do Google Colab.
-- **Sem dados falsos:** a aplicação nunca grava dados simulados; se a API falha, o erro é mostrado.
 - **SQLite:** não exige servidor. `UNIQUE(par, cotado_em)` + `INSERT OR IGNORE` evita duplicar a mesma cotação.
 - **Transformação:** textos viram número, timestamp Unix vira data (UTC) e é calculado o spread (venda - compra).
-- **Client injetável:** `CotacaoService` recebe o client, o que permite testar sem internet.
-
 ## 6. Testes (9)
 O teste de integração exercita service, transformer e SQLite reais, com a resposta HTTP simulada: fluxo completo; sem duplicar ao sincronizar duas vezes; timeout; HTTP 503 com 3 tentativas; HTTP 429 com recuperação; HTTP 404 sem repetir; envio da chave no cabeçalho; JSON inválido; campos faltando.
 
