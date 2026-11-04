@@ -2,7 +2,7 @@
 
 Trabalho de Avaliação 3 — Integração com Reuso de Software.
 
-**Grupo:** _1_
+**Grupo 1:** Ana Luiza, Dieli, Helena e Pedro Alves
 
 ## 1. O que a aplicação faz
 
